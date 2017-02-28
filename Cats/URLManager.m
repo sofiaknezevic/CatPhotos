@@ -35,7 +35,7 @@
                                               
                                           }
                                           
-                                          NSError *jsonError;
+                                          NSError *jsonError = nil;
                                           
                                           NSDictionary *getThatJSON = [NSJSONSerialization
                                                                        JSONObjectWithData:data

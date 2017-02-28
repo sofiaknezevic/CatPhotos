@@ -31,6 +31,10 @@
     return self;
 }
 
++(instancetype)withDictionary:(NSDictionary *)dictionary
+{
+    return [[self alloc]initWithDictionary:dictionary];
+}
 
 + (NSArray *)makePhotoArray:(NSArray *)catPhotoArray
 {

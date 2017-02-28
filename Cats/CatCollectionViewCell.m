@@ -24,6 +24,12 @@
 {
     [super awakeFromNib];
     self.urlManager = [[URLManager alloc] init];
+    
+}
+
+-(void)setPhotoCat:(CatPhoto *)photoCat
+{
+    _photoCat = photoCat;
     [self configureCell];
 }
 
@@ -33,8 +39,11 @@
     
     NSURL *temporary = self.photoCat.imageURL;
     [self.urlManager downloadCatPhotos:temporary completion:^(UIImage *image) {
-        
-    self.catImageView.image = image;
+    
+        if ([self.photoCat.imageURL isEqual:temporary]) {
+            
+            self.catImageView.image = image;
+        }
         
         
         

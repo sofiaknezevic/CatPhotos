@@ -27,8 +27,9 @@
     self.catsArray = [[NSMutableArray alloc] init];
     
     self.vcURLManager = [[URLManager alloc] init];
-    [self getPictures];
     
+    
+    [self getPictures];
     
 }
 
@@ -37,10 +38,7 @@
 {
     
     CatCollectionViewCell *cell = [self.catCollectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
-    
-    CatPhoto *photo = [self.catsArray objectAtIndex:indexPath.item];
-    
-    cell.photoCat = photo;
+    cell.photoCat = self.catsArray[indexPath.row];
     
     return cell;
     
