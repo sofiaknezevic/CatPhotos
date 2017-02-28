@@ -19,14 +19,6 @@
 
 @implementation CatCollectionViewCell
 
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    self.urlManager = [[URLManager alloc] init];
-    
-}
-
 -(void)setPhotoCat:(CatPhoto *)photoCat
 {
     _photoCat = photoCat;
@@ -35,17 +27,13 @@
 
 -(void)configureCell
 {
+    self.urlManager = [[URLManager alloc] init];
+    
     self.catTitleLabel.text = self.photoCat.title;
     
-    NSURL *temporary = self.photoCat.imageURL;
-    [self.urlManager downloadCatPhotos:temporary completion:^(UIImage *image) {
-    
-        if ([self.photoCat.imageURL isEqual:temporary]) {
+    [self.urlManager downloadCatPhotos:self.photoCat.imageURL completion:^(UIImage *image) {
             
-            self.catImageView.image = image;
-        }
-        
-        
+        self.catImageView.image = image;
         
     }];
 }

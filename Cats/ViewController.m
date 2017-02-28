@@ -28,7 +28,6 @@
     
     self.vcURLManager = [[URLManager alloc] init];
     
-    
     [self getPictures];
     
 }
@@ -38,6 +37,7 @@
 {
     
     CatCollectionViewCell *cell = [self.catCollectionView dequeueReusableCellWithReuseIdentifier:@"catCell" forIndexPath:indexPath];
+    
     cell.photoCat = self.catsArray[indexPath.row];
     
     return cell;
