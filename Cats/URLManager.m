@@ -24,7 +24,9 @@
     NSURLSessionDataTask *dataTask = [configureSession
                                       dataTaskWithRequest:requestURL
                                       completionHandler:^
-                                      (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                      (NSData * _Nullable data,
+                                       NSURLResponse * _Nullable response,
+                                       NSError * _Nullable error) {
                                           
                                           if (error) {
                                               
@@ -35,7 +37,10 @@
                                           
                                           NSError *jsonError;
                                           
-                                          NSDictionary *getThatJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                                          NSDictionary *getThatJSON = [NSJSONSerialization
+                                                                       JSONObjectWithData:data
+                                                                       options:0
+                                                                       error:&jsonError];
                                           
                                           if (jsonError) {
                                               
@@ -44,8 +49,8 @@
                                               
                                           }
                                           
-                                          NSArray *pictures = getThatJSON[@"photos"];
-                                          
+                                          NSArray *pictures = getThatJSON[@"photos"][@"photo"];
+                                       
                                           NSArray *photosArray = [CatPhoto makePhotoArray:pictures];
                                           
                                           [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -69,9 +74,12 @@
     NSURLSession *configureSession = [NSURLSession sessionWithConfiguration:configure];
     
     
-    NSURLSessionDownloadTask *downloadPhotos = [configureSession
+    NSURLSessionDownloadTask *downloadCatPhotos = [configureSession
                                                 downloadTaskWithURL:url
-                                                completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                                completionHandler:^(NSURL * _Nullable location,
+                                                                    NSURLResponse * _Nullable response,
+                                                                    NSError * _Nullable error) {
+                                                    
                                                     
                                                     if (error) {
                                                         
@@ -91,7 +99,7 @@
                                                     
                                                 }];
     
-    [downloadPhotos resume];
+    [downloadCatPhotos resume];
     
     
 }

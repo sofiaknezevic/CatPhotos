@@ -36,7 +36,7 @@
 {
     NSMutableArray *theCats = [[NSMutableArray alloc] init];
     
-    for (NSDictionary *information in theCats) {
+    for (NSDictionary *information in catPhotoArray) {
         
         CatPhoto *photo = [[CatPhoto alloc] initWithDictionary:information];
         [theCats addObject:photo];

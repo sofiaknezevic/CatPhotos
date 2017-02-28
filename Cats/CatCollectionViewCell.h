@@ -11,6 +11,7 @@
 
 @interface CatCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) CatPhoto *catPhoto;
+@property (nonatomic, strong) CatPhoto *photoCat;
+
 
 @end

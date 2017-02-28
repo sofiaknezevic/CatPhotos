@@ -29,15 +29,13 @@
 
 -(void)configureCell
 {
-    self.catTitleLabel.text = self.catPhoto.title;
+    self.catTitleLabel.text = self.photoCat.title;
     
-    NSURL *temporary = self.catPhoto.imageURL;
+    NSURL *temporary = self.photoCat.imageURL;
     [self.urlManager downloadCatPhotos:temporary completion:^(UIImage *image) {
         
-        if ([self.catPhoto.imageURL isEqual:temporary]) {
-            
-            self.catImageView.image = image;
-        }
+    self.catImageView.image = image;
+        
         
         
     }];
