@@ -1,0 +1,50 @@
+//
+//  CatPhoto.m
+//  Cats
+//
+//  Created by Sofia Knezevic on 2017-02-27.
+//  Copyright © 2017 Sofia Knezevic. All rights reserved.
+//
+
+#import "CatPhoto.h"
+
+@implementation CatPhoto
+
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryOfCats
+{
+    self = [super init];
+    if (self) {
+        
+        self.title = dictionaryOfCats[@"title"];
+        
+        NSString *urlString = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg",
+                               dictionaryOfCats[@"farm"],
+                               dictionaryOfCats[@"server"],
+                               dictionaryOfCats[@"id"],
+                               dictionaryOfCats[@"secret"]];
+        
+        self.imageURL = [NSURL URLWithString:urlString];
+        
+        
+    }
+    return self;
+}
+
+
++ (NSArray *)makePhotoArray:(NSArray *)catPhotoArray
+{
+    NSMutableArray *theCats = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary *information in theCats) {
+        
+        CatPhoto *photo = [[CatPhoto alloc] initWithDictionary:information];
+        [theCats addObject:photo];
+        
+    }
+    
+    return theCats;
+}
+
+
+@end
